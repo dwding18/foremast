@@ -1,6 +1,8 @@
 # Design
 
-{% file src="../.gitbook/assets/foremast-3.png" caption="Foremast High Level Design" %}
+<p align="center">
+	<img src="docs/foremast.png" align="center" alt="Foremast">
+</p>
 
 
 
