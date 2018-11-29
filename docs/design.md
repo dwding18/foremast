@@ -2,17 +2,31 @@
 
 ![](../.gitbook/assets/foremastarchitecture%20%282%29.png)
 
-### Formast-AI-API Rest Service
+### Foremast-AI-API Service
 
-Formast-AI-API service offers several internal APIs that interact with the underly Data Store, publish the request message to message and provide application health or un-health result to Formast-Barrelmn, non Foremast client or UI. 
+Foremast-AI-API service offers several internal APIs that interacts with the underly Data Store, publish the request message to message bus, retrieve the request status health or un-health result to Foremast-Barrelmn, non Foremast client or UI. Foremast-AI-API can serve the requests from multiple clusters. 
 
-Formast-AI-API service can also retrieve config from data store and trigger the re-occurring request, publish the request to message bus.
+Foremast-AI-API service can retrieve config from data store and trigger the re-occurring request.
+
+In the future release Foremast-AI-API service will  also monitor and  schedule   the tasks based on request status.
 
 ### Foremast-AI-Engine
 
 Foremast-AI-Engine is consumer of the message. It can scale to multiple consumers. 
 
 Based on the configuration it will first query the historical metric from metric store, compute the machine learning/statistic algorithm model,  for canary pre-deployment stage it will query the baseline and current metric and perform pairwise algorithm to check if both have same distribution pattern,  if current and baseline has different distribution pattern, it will be lower threshold. and then use threshold to detect current anomaly data points based on  historical mode .
+
+### Scale and Fault Tolerant
+
+we can add more Foremast-AI-Engine pod to scale
+
+If there is any request is processed more than X minute \(configurable\), other Foremast-AI-Engine will take over and reprocess the request.
+
+### Monitoring/Alerting
+
+We leverage ElasticSearch as datastore to store the request content and status. Foremast-Ai-Engine will not only update the request status but also provide reason.
+
+You can locate the request status and detail via Kibana dashboard. You can also config alert.
 
 ### Algorithms 
 
