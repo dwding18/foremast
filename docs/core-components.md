@@ -26,7 +26,7 @@ Abort is abort by client.
 
 If any anomaly got detected , Foremast-AI-Engine will mark the statue as completed un-health before endTime is reached. Otherwise, Foremast-AI-Engine will continuous to monitor and check if there is any anomaly until endTime is reached.
 
-**Scale**  we can add more Foremast-AI-Engine to scale
+**Scalability**  we can add more Foremast-AI-Engine to scale
 
 **Fault Tolerant**  If there is any request is processed more than X minute \(configurable\), other Foremast-AI-Engine will take over and reprocess the request.
 
