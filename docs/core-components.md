@@ -22,7 +22,13 @@ V1.0 does not have message bus. Foremast-AI-Engine will retrieve the oldest  ope
 
 There are 6 different status : initial , in progress , reprocess, completed health , complete un-health and completed unknown.
 
-Abort is abort by client. 
+Abort is abort by client.
+
+If any anomaly got detected , Foremast-AI-Engine will mark the statue as completed un-health before endTime is reached. Otherwise, Foremast-AI-Engine will continuous to monitor and check if there is any anomaly until endTime is reached.
+
+**Scale**  we can add more Foremast-AI-Engine to scale
+
+**Fault Tolerant**  If there is any request is processed more than X minute \(configurable\), other Foremast-AI-Engine will take over and reprocess the request.
 
 ![](../.gitbook/assets/foremastrequeststatediagram.png)
 

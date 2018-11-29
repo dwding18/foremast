@@ -1,6 +1,6 @@
 # Design
 
-![](../.gitbook/assets/foremastarchitecture%20%281%29.png)
+![](../.gitbook/assets/foremastarchitecture%20%282%29.png)
 
 ### Formast-AI-API Rest Service
 
