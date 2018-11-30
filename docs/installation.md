@@ -76,6 +76,8 @@ foremast-engine-748d45cc98-qph54   1/1     Running   0          5h
 
 ## Run example
 
+![Example diagram](../.gitbook/assets/demo.png)
+
 #### Run foo v1
 
 ```text
