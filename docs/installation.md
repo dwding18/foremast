@@ -138,3 +138,22 @@ Within the prometheus metric chart, you can also see the error count trend after
 
 
 
+## Uninstallation
+
+### Uninstall All-in-One
+
+```text
+$ kubectl delete -Rf examples/foo/v1
+$ kubectl delete -Rf deploy/foremast/
+$ kubectl delete -Rf deploy/prometheus-operator/
+```
+
+### Uninstall Foremast and example only
+
+```text
+$ kubectl delete -Rf examples/foo/v1
+$ kubectl delete -Rf deploy/foremast/
+```
+
+
+
