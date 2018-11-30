@@ -2,21 +2,21 @@
 
 ![](../.gitbook/assets/foremastarchitecture%20%282%29.png)
 
-### Foremast-AI-API Service
+### Foremast Service
 
-Foremast-AI-API service offers several internal APIs that interacts with the underly Data Store, publish the request message to message bus, retrieve the request status health or un-health result to Foremast-Barrelmn, non Foremast client or UI. Foremast-AI-API can serve the requests from multiple clusters. 
+Foremast service offers internal APIs that interacts with the underly Data Store, publish the request message to message bus, retrieve the request status health or un-health result to Service Client \( for example Foremast-Barrelmn , non Foremast client or UI \). Foremast service can serve the requests from different clusters. 
 
 Foremast-AI-API service can retrieve config from data store and trigger the re-occurring request.
 
 In the future release Foremast-AI-API service will  also monitor and  schedule   the tasks based on request status.
 
-### Foremast-AI-Engine
+### Foremast Brain
 
 Foremast-AI-Engine is consumer of the message. It can scale to multiple consumers. 
 
 Based on the configuration it will first query the historical metric from metric store, compute the machine learning/statistic algorithm model,  for canary pre-deployment stage it will query the baseline and current metric and perform pairwise algorithm to check if both have same distribution pattern,  if current and baseline has different distribution pattern, it will be lower threshold. and then use threshold to detect current anomaly data points based on  historical mode .
 
-### Scalability and Fault Tolerant
+### Scalability, Fault Tolerant and Shared-Nothing
 
 we can add more Foremast-AI-Engine pod to scale
 
