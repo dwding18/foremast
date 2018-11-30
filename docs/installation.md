@@ -123,6 +123,12 @@ status:
   anomaly: {}
   expired: false
   jobId: 6fff8856b554115bc3c94ce9eb89fd86808f94458ed559c6c3fe67c91342e4b2
-  phase: Running
+  phase: Unhealthy
+```
+
+Once you see the "Unhealthy" phase, foremast triggers a rollback, you can check the running version with following command, it should run the V1.
+
+```text
+$ kubectl get deployment foo -o yaml
 ```
 
