@@ -25,7 +25,7 @@ It addresses following problems in an enterprise environment of Kubernetes:
 Make sure you have the following prerequisites:
 
 * A local Go 1.7+ development environment.
-* Access to a Kubernetes cluster.
+* Admin access to a Kubernetes cluster.
 
 ### Setup Steps
 

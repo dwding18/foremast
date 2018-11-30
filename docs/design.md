@@ -6,9 +6,19 @@ There are two main Restful API. One is create request. Foremast Service will val
 
 ![](../.gitbook/assets/foremastarchitecture-1%20%281%29.png)
 
-### Foremast Service
-
 The the second one is  search by id. Client can base on id to retrieve the status of request . Once Foremost Brain completed the application health judgement, it will return health, un-health or unknown\(if current metric is not there\) with reason.
+
+### Foremast Barrelman
+
+Barrelman is a component to watch the Deployment change in DeploymentTime and start to monitor the deployment metrics or related information, make sure the deployment will be healthy. If it detects unhealthy status, it can trigger remediation actions.  The monitoring can be triggered by kubectl or foremast UI in the future. So that Barrelman can watch the application status in runtime also.
+
+![Barrelman architecture](../.gitbook/assets/foremast-barrelman.png)
+
+![Barrelman workflow](../.gitbook/assets/barrelman-flow.png)
+
+
+
+### Foremast Service
 
 In the future release Foremast can support re-occurring monitoring request.
 
