@@ -36,15 +36,9 @@ Abort is abort by client.
 
 ![](../.gitbook/assets/foremastrequeststatediagram.png)
 
-### Scalability, Fault Tolerant and Shared-Nothing
-
-we can add more Foremast-AI-Engine pod to scale
-
-If there is any request is processed more than X minute \(configurable\), other Foremast-AI-Engine will take over and reprocess the request.
-
 ### Monitoring/Alerting
 
-We leverage ElasticSearch as datastore to store the request content and status. Foremast-Ai-Engine will not only update the request status but also provide reason.
+We leverage ElasticSearch as datastore to store the request content and status. Foremast Brain not only update the request status but also provide reason and anomaly information if there is any failure or anomaly got detected.
 
 You can locate the request status and detail via Kibana dashboard. You can also config alert.
 
