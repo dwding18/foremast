@@ -37,6 +37,7 @@ prometheus-operator-587d64f4c-lvzsn   1/1     Running   0          6h
 $ kubectl create -Rf deploy/foremast/
 
 $ kubectl get pods -n foremast
+
 NAME                               READY   STATUS    RESTARTS   AGE
 barrelman-85c67bbbb5-nh5sl         1/1     Running   0          1h
 elasticsearch-0                    1/1     Running   0          5h
@@ -63,6 +64,7 @@ spec:
 $ kubectl create -Rf deploy/foremast/
 
 $ kubectl get pods -n foremast
+
 NAME                               READY   STATUS    RESTARTS   AGE
 barrelman-85c67bbbb5-nh5sl         1/1     Running   0          1h
 elasticsearch-0                    1/1     Running   0          5h
@@ -92,7 +94,7 @@ Use following command to check the deployment status
 $ kubectl get deploymentmonitor foo -o yaml
 ```
 
-It will show following information, if the deployment is considered as unhealthy, it will show "Unhealthy" and roll back the v2.
+It will show following information, if the deployment is considered as unhealthy, it will show "Unhealthy" and roll it back the v1.
 
 ```text
 status:
