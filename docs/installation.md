@@ -104,7 +104,7 @@ Handling connection for 9090
 
 #### Run foo v2
 
-Wait 5 minutes to let it have historical data. Then roll out V2 to see what will happen.
+Wait at least **5 minutes** to let it have historical data. Then roll out V2 to see what will happen.
 
 ```text
 $ kubectl replace -f examples/foo/v2/foo_v2.yaml
