@@ -1,12 +1,10 @@
 # Design
 
-Foremast service offers internal APIs that interacts with the underly Data Store, publish the request message to message bus, retrieve the request status  to Service Client.  
 
-There are two main Restful API. One is create request. Foremast Service will validate the request , store to data store, publish the request to message bus \(future release\) and then return id response.
 
 ![](../.gitbook/assets/foremastarchitecture-1%20%281%29.png)
 
-The the second one is  search by id. Client can base on id to retrieve the status of request . Once Foremost Brain completed the application health judgement, it will return health, un-health or unknown\(if current metric is not there\) with reason.
+
 
 ### Foremast Barrelman
 
@@ -20,9 +18,19 @@ Barrelman is a component to watch the Deployment change in DeploymentTime and st
 
 ### Foremast Service
 
+Foremast service offers internal APIs that interacts with the underly Data Store, publish the request message to message bus, retrieve the request status  to Service Client. 
+
+Foremast Service can request from different clusters. 
+
+There are two main Restful API. One is create request. Foremast Service will validate the request , store to data store, publish the request to message bus \(future release\) and then return id response.
+
+The the second one is  search by id. Client can base on id to retrieve the status of request . Once Foremost Brain completed the application health judgement, it will return health, un-health or unknown\(if current metric is not there\) with reason.
+
 In the future release Foremast can support re-occurring monitoring request.
 
 Foremast service will  monitor , schedule  the tasks based on request status and configuration.
+
+
 
 ### Foremast Brain
 
