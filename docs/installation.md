@@ -78,15 +78,33 @@ foremast-engine-748d45cc98-qph54   1/1     Running   0          5h
 
 ![Example diagram](../.gitbook/assets/demo.png)
 
+Foo is a spring boot application with a metric "http\_server\_requests\_errors", the metric shows the errors happen during the http requests.  **V1** is a normal application, the error count is always **ZERO. V2** is an error generator version, it can generate 5xx error based on the environment settings. This example is to simulate a typical deployment error, then foremast helps to roll it back.
+
 #### Run foo v1
 
 ```text
 $ kubectl create -Rf examples/foo/v1/
+$ kubectl get pods
+
+NAME                   READY   STATUS    RESTARTS   AGE
+foo-6948547dcd-9dglf   1/1     Running   0          7m
 ```
 
-#### Wait around 1 hour to let the system generate the historical running metrics
+#### Metrics in prometheus
+
+If you are running in "All-In-One" mode, you can try the following command to export the prometheus UI.  You can type "[http://localhost:9090/graph](http://localhost:9090/graph)" in your browser after that. Search "namespace\_app\_per\_pod:http\_server\_requests\_errors" and display the metric with tab "Graph", you are going to have a error chart.
+
+```text
+$ ./deploy/export/prometheus.sh
+
+Forwarding from 127.0.0.1:9090 -> 9090
+Forwarding from [::1]:9090 -> 9090
+Handling connection for 9090
+```
 
 #### Run foo v2
+
+Wait 5 minutes to let it have historical data.
 
 ```text
 $ kubectl replace -f examples/foo/v2/foo_v2.yaml
