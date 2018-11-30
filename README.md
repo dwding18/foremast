@@ -36,6 +36,9 @@ How to [Set Up](docs/installation.md).
 #### v0.5
 
 *  Controller/CRD with time series modeling
+*  More machine learning models for different time series data behavior
+
+
 
 ## Contributing
 
