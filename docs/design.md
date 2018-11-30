@@ -10,9 +10,9 @@
 
 Barrelman is a component to watch the Deployment change in DeploymentTime and start to monitor the deployment metrics or related information, make sure the deployment will be healthy. If it detects unhealthy status, it can trigger remediation actions.  The monitoring can be triggered by kubectl or foremast UI in the future. So that Barrelman can watch the application status in runtime also.
 
-![Barrelman architecture](../.gitbook/assets/foremast-barrelman.png)
 
 
+![Foremast-Barrelman Diagram](../.gitbook/assets/foremast-barrelman.png)
 
 ### Foremast Service
 
@@ -50,9 +50,9 @@ Abort is abort by client.
 
 **Detect Anomaly Fast**: If any anomaly got detected , Foremast Brain will mark the statue as completed un-health before endTime is reached. Otherwise, Foremast Brain will continuous to monitor and check if there is any anomaly until endTime is reached.
 
-![](../.gitbook/assets/foremastrequeststatediagram.png)
-
 ### Monitoring/Alerting
+
+![](../.gitbook/assets/foremastrequeststatediagram.png)
 
 We leverage ElasticSearch as datastore to store the request content and status. Foremast Brain not only update the request status but also provide reason and anomaly information if there is any failure or anomaly got detected.
 

@@ -31,6 +31,8 @@ prometheus-k8s-1                      3/3     Running   1          6h
 prometheus-operator-587d64f4c-lvzsn   1/1     Running   0          6h
 ```
 
+#### Hints: if you get error when you running the creation, please run the command again.
+
 #### Foremast:
 
 ```text
