@@ -4,6 +4,14 @@
 
 ## Foremast-Barrelman
 
+Barrelman is a component to watch the Deployment change in DeploymentTime and start to monitor the deployment metrics or related information, make sure the deployment will be healthy. If it detects unhealthy status, it can trigger remediation actions.  The monitoring can be triggered by kubectl or foremast UI in the future. So that Barrelman can watch the application status in runtime also.
+
+![Barrelman architecture](../.gitbook/assets/foremast-barrelman.png)
+
+![Barrelman workflow](../.gitbook/assets/barrelman-flow.png)
+
+
+
 ## Foremast-Judgement Framework
 
 ![Foremast-Judgement Framework Sequence Diagram](../.gitbook/assets/foremastjudgementsequencediagram.png)
