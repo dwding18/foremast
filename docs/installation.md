@@ -132,3 +132,9 @@ Once you see the "Unhealthy" phase, foremast triggers a rollback, you can check 
 $ kubectl get deployment foo -o yaml
 ```
 
+Within the prometheus metric chart, you can also see the error count trend after couple minutes.
+
+![](../.gitbook/assets/prometheus_sceen.png)
+
+
+
