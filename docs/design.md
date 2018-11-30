@@ -4,17 +4,33 @@
 
 ### Foremast Service
 
-Foremast service offers internal APIs that interacts with the underly Data Store, publish the request message to message bus, retrieve the request status health or un-health result to Service Client \( for example Foremast-Barrelmn , non Foremast client or UI \). Foremast service can serve the requests from different clusters. 
+Foremast service offers internal APIs that interacts with the underly Data Store, publish the request message to message bus, retrieve the request status  to Service Client.  
 
-Foremast-AI-API service can retrieve config from data store and trigger the re-occurring request.
+There are two main Restful API. One is create request. Foremast Service will validate the request , store to data store, publish the request to message bus \(future release\) and then return id response.
 
-In the future release Foremast-AI-API service will  also monitor and  schedule   the tasks based on request status.
+The the second one is  search by id. Client can base on id to retrieve the status of request . Once Foremost Brain completed the application health judgement, it will return health, un-health or unknown\(if current metric is not there\) with reason.
+
+In the future release Foremast can support re-occurring monitoring request.
+
+Foremast service will  monitor , schedule  the tasks based on request status and configuration.
 
 ### Foremast Brain
 
-Foremast-AI-Engine is consumer of the message. It can scale to multiple consumers. 
+Foremast Brain is consumer of the Foremast service request. It is brain of Foremast.
 
-Based on the configuration it will first query the historical metric from metric store, compute the machine learning/statistic algorithm model,  for canary pre-deployment stage it will query the baseline and current metric and perform pairwise algorithm to check if both have same distribution pattern,  if current and baseline has different distribution pattern, it will be lower threshold. and then use threshold to detect current anomaly data points based on  historical mode .
+Foremast Brain is scale, fault tolerant and shard-nothing.
+
+Based on the configuration it will first query the historical metric from metric store, compute the machine learning/statistic algorithm model,  for canary deployment  it will query the baseline and current metric and perform pairwise algorithm to check if both have same distribution pattern,  if current and baseline has different distribution pattern, it will be lower threshold. and then use threshold to detect current anomaly data points based on  historical mode .
+
+V1.0 does not have message bus. Foremast Brain will retrieve the oldest open request based on last modified time and reserve the request to process.
+
+There are 6 different status : initial , in progress , reprocess, completed health , complete un-health and completed unknown.
+
+Abort is abort by client.
+
+**Detect Anomaly Fast**: If any anomaly got detected , Foremast Brain will mark the statue as completed un-health before endTime is reached. Otherwise, Foremast-AI-Engine will continuous to monitor and check if there is any anomaly until endTime is reached.
+
+![](../.gitbook/assets/foremastrequeststatediagram.png)
 
 ### Scalability, Fault Tolerant and Shared-Nothing
 
