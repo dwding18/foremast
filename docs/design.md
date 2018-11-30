@@ -1,6 +1,6 @@
 # Design
 
-![](../.gitbook/assets/foremastarchitecture%20%282%29.png)
+![](../.gitbook/assets/foremastarchitecture-1%20%281%29.png)
 
 ### Foremast Service
 
