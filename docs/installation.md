@@ -49,7 +49,7 @@ foremast-engine-748d45cc98-qph54   1/1     Running   0          5h
 
 #### Prometheus settings
 
-Change yaml file `deploy/foremast/barrelman/spring-boot-deployment-metadata.yaml`, put the correct prometheus endpoint
+Change yaml file `deploy/foremast/barrelman/deployment-metadata-default.yaml`, put the correct prometheus endpoint
 
 ```text
 spec:
