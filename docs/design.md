@@ -1,6 +1,6 @@
 # Design
 
-
+## Architecture
 
 ![](../.gitbook/assets/foremastarchitecture-1%20%281%29.png)
 
@@ -28,8 +28,6 @@ In the future release Foremast can support re-occurring monitoring request.
 
 Foremast service will  monitor , schedule  the tasks based on request status and configuration.
 
-
-
 ### Foremast Brain
 
 Foremast Brain is the consumer of the Foremast service request. It is brain of Foremast.
@@ -38,73 +36,58 @@ Based on the configuration it will first query the historical metric from metric
 
 **Horizontal Scaling**  Foremast Brain can be horizontal scaling via adding more nodes.  
 
- **Fault Tolerant**  If there is any request is processed more than X minute \(configurable\), other Foremast Brain can take over and reprocess the request.
+**Fault Tolerant**  If there is any request is processed more than X minute \(configurable\), other Foremast Brain can take over and reprocess the request.
 
 **Shared-Nothing Architecture** each Foremast Brain node is independent, and there is no single point of contention across the system. 
 
-V1.0 does not have message bus. Foremast Brain will retrieve the oldest open request based on last modified time and reserve the request to process.
-
-There are 6 different status : initial , in progress , reprocess, completed health , complete un-health and completed unknown.
-
-Abort is abort by client.
-
-**Detect Anomaly Fast**: If any anomaly got detected , Foremast Brain will mark the statue as completed un-health before endTime is reached. Otherwise, Foremast Brain will continuous to monitor and check if there is any anomaly until endTime is reached.
+**Fail Fast**: If any anomaly is detected , Foremast Brain will mark the statue as completed un-health before endTime is reached. Otherwise, Foremast Brain will continuous to monitor and check if there is any anomaly until endTime is reached.
 
 ### Monitoring/Alerting
 
 ![](../.gitbook/assets/foremastrequeststatediagram.png)
 
-We leverage ElasticSearch as datastore to store the request content and status. Foremast Brain not only update the request status but also provide reason and anomaly information if there is any failure or anomaly got detected.
+We leverage ElasticSearch as datastore to store the request content and status. Foremast Brain not only update the request status but also provide reason and anomaly information if there is any failure or anomaly gets detected.
 
-You can locate the request status and detail via Kibana dashboard. You can also config alert.
+You can locate the request status and detail via Kibana dashboard.
 
-### Algorithms 
+### Models  <a id="models"></a>
 
-For v1.0 we will pick different default algorithm base one number of metric types. User can overwrite the default algorithm via the environment variables.  
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">One Metrics</th>
+      <th style="text-align:left">Two Metrics</th>
+      <th style="text-align:left">3+ More</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>​</p>
+        <ul>
+          <li>Moving Average</li>
+          <li>Exponential Smoothing</li>
+          <li>Double Exponential Smoothing</li>
+          <li>Holt-Winters</li>
+          <li>Prophet (facebook)</li>
+        </ul>
+      </td>
+      <td style="text-align:left">
+        <p>​</p>
+        <ul>
+          <li>Bivariate Normal Distribution</li>
+        </ul>
+      </td>
+      <td style="text-align:left">
+        <p>​</p>
+        <ul>
+          <li>Deep Learning (LSTM)</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>We also support pairwise algorithm \(baseline vs current\)
 
-For future release we will introduce model advisory component.  If user does not define the algorithm , model advisory will periodically evaluate different algorithms and pick the best one. 
-
-#### One metric Types:
-
-Moving Average
-
-Exponential Smoothing
-
-Double Exponential Smoothing
-
-Holt-Winters
-
-Prophet \(facebook\)
-
-#### Two metric Types:
-
-Bivariate Normal Distribution
-
-#### Three or more metric Types:
-
-Deep Learning \(LSTM\)
-
-#### We also support pairwise algorithm  \(baseline vs current\)
-
-**Compare Two:**
-
-Mann-Whitney , Wilcoxon, Kruskal  
-
-**Compare Two more :**
-
- Kruskal  
-
-Fried manchi square \(special case\)
-
-
-
-
-
-
-
-
-
-
-
-
+* Mann-Whitney, Wilcoxon, Kruskal
+* Fried manchi square \(special case\)
 

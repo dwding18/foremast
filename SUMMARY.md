@@ -8,5 +8,4 @@
 * [Contributing guidelines](docs/contributing.md)
 * [Installation](docs/installation.md)
 * [Design](docs/design.md)
-* [Roadmap](docs/roadmap.md)
 
