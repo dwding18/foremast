@@ -10,12 +10,9 @@ With an introduction to the core concepts in the previous section, lets move ont
 
 #### Minikube
 
-{% hint style="info" %}
-Make sure your compute has at least 4096MB memory
-{% endhint %}
+**Make sure your compute has at least 4096MB memory.**
 
-If you don't have kubenertes cluster, you can have you own minikube setup in your local environment. Please check out minikube settings [https://kubernetes.io/docs/setup/minikube/](https://kubernetes.io/docs/setup/minikube/).
-
+If you don't have kubenertes cluster, you can have you own minikube setup in your local environment. Please check out minikube settings [https://kubernetes.io/docs/setup/minikube/](https://kubernetes.io/docs/setup/minikube/).  
   
 Once you got minikube installed in your local, please use our suggested minikube startup shell, `deploy/minikube.sh` . The shell gives enough memory to make sure all pods will be started correctly.
 
