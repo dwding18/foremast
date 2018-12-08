@@ -10,8 +10,14 @@ With an introduction to the core concepts in the previous section, lets move ont
 
 #### Minikube
 
-If you don't have kubenertes cluster, you can have you own minikube setup in your local environment. Please check out minikube settings [https://kubernetes.io/docs/setup/minikube/](https://kubernetes.io/docs/setup/minikube/).  
-Once you got minikube installed in your local, please use our suggested minikube startup shell, [https://github.intuit.com/dev-containers/foremast/blob/master/deploy/minikube.sh](https://github.intuit.com/dev-containers/foremast/blob/master/deploy/minikube.sh) The shell gives enough memory to make sure all pods will be started correctly.
+{% hint style="info" %}
+Make sure your compute has at least 4096MB memory
+{% endhint %}
+
+If you don't have kubenertes cluster, you can have you own minikube setup in your local environment. Please check out minikube settings [https://kubernetes.io/docs/setup/minikube/](https://kubernetes.io/docs/setup/minikube/).
+
+  
+Once you got minikube installed in your local, please use our suggested minikube startup shell, `deploy/minikube.sh` . The shell gives enough memory to make sure all pods will be started correctly.
 
 #### Prometheus
 
@@ -33,7 +39,7 @@ prometheus-operator-587d64f4c-lvzsn   1/1     Running   0          6h
 
 #### Hints: if you get error when you running the creation, please run the command again.
 
-#### Foremast:
+#### Foremast
 
 ```text
 $ kubectl create -Rf deploy/foremast/
@@ -60,7 +66,7 @@ spec:
     endpoint: http://prometheus-k8s.monitoring.svc.cluster.local:9090/api/v1/
 ```
 
-#### Foremast:
+#### Foremast
 
 ```text
 $ kubectl create -Rf deploy/foremast/
@@ -92,7 +98,7 @@ foo-6948547dcd-9dglf   1/1     Running   0          7m
 
 #### Metrics in prometheus
 
-If you are running in "All-In-One" mode, you can try the following command to export the prometheus UI.  You can type "[http://localhost:9090/graph](http://localhost:9090/graph)" in your browser after that. Search "namespace\_app\_per\_pod:http\_server\_requests\_errors" and display the metric with tab "Graph", you are going to have a error chart.
+If you are running in "All-In-One" mode, you can try the following command to export the prometheus UI.  
 
 ```text
 $ ./deploy/export/prometheus.sh
@@ -101,6 +107,9 @@ Forwarding from 127.0.0.1:9090 -> 9090
 Forwarding from [::1]:9090 -> 9090
 Handling connection for 9090
 ```
+
+You can type "[http://localhost:9090/graph](http://localhost:9090/graph)" in your browser after that.   
+Search for`namespace_app_per_pod:http_server_requests_errors` and display the metric with tab **Graph**, you are going to see a error chart.
 
 #### Run foo v2
 
